@@ -6,12 +6,13 @@ public class Main
     {
         Circle obj1 = new Circle(4, new Punkt(4, 5));
         Circle obj2 = new Circle();
-        Rectangle rect = new Rectangle(4, 6);
+        Rectangle rect = new Rectangle(4, 6, new Punkt(2, 8));
         System.out.println(obj1.getPowierzchnia());
         System.out.println(obj1.setSrednica());
         System.out.println(obj1.getRadiant());
         obj1.wSrodku(new Punkt(1, 4));
         System.out.println(obj2);
+        Circle.CircleOnRectangle(rect);
     }
 }
 class Punkt
@@ -26,10 +27,12 @@ class Punkt
 class Rectangle
 {
     int width, height;
-    Rectangle(int a, int b)
+    Punkt Centrum;
+    Rectangle(int a, int b, Punkt Centrum)
     {
         this.width = a;
         this.height = b;
+        this.Centrum = Centrum;
     }
 }
 class Circle
@@ -67,8 +70,11 @@ class Circle
             System.out.println("Punkt jest na obwodzie lub poza okręgiem");
         }
     }
-    public static void CircleOnRectangle (Rectangle rectan)
+    public static void CircleOnRectangle (Rectangle rect)
     {
-
+        int radiant = (int)(Math.sqrt((Math.pow(rect.height,2)) + (Math.pow(rect.width, 2)))) / 2;
+        //Circle obj3 = new Circle(radiant, rect.Centrum);
+        System.out.println("Punkt Okręgu opisanego na prostokącie ma współrzędne: [" + rect.Centrum.a + ", " + rect.Centrum.b + "]");
+        System.out.println("A promień wynosi: " + radiant);
     }
 }
