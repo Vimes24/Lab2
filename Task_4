@@ -1,0 +1,74 @@
+package com.company;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Circle obj1 = new Circle(4, new Punkt(4, 5));
+        Circle obj2 = new Circle();
+        Rectangle rect = new Rectangle(4, 6);
+        System.out.println(obj1.getPowierzchnia());
+        System.out.println(obj1.setSrednica());
+        System.out.println(obj1.getRadiant());
+        obj1.wSrodku(new Punkt(1, 4));
+        System.out.println(obj2);
+    }
+}
+class Punkt
+{
+   int a, b;
+   Punkt(int a, int b)
+   {
+       this.a = a;
+       this.b = b;
+   }
+}
+class Rectangle
+{
+    int width, height;
+    Rectangle(int a, int b)
+    {
+        this.width = a;
+        this.height = b;
+    }
+}
+class Circle
+{
+    int radiant, srednica;
+    Punkt Srodek;
+    Circle(int radiant, Punkt Srodek)
+    {
+        this.radiant = radiant;
+        this.Srodek = Srodek;
+    }
+    Circle()
+    {
+    }
+    public double getPowierzchnia()
+    {
+        return Math.PI * Math.pow(this.radiant,2);
+    }
+    public int setSrednica()
+    {
+        return this.srednica = 2 * radiant;
+    }
+    public int getRadiant()
+    {
+        return this.radiant;
+    }
+    public void wSrodku(Punkt pkt)
+    {
+        if ((Math.pow(pkt.a - Srodek.a, 2)) + (Math.pow(pkt.b - Srodek.b, 2)) < Math.pow(radiant, 2))
+        {
+            System.out.println("Podany punkt jest wewnątrz okręgu");
+        }
+        else
+        {
+            System.out.println("Punkt jest na obwodzie lub poza okręgiem");
+        }
+    }
+    public static void CircleOnRectangle (Rectangle rectan)
+    {
+
+    }
+}
